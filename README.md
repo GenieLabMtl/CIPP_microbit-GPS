@@ -3,13 +3,13 @@
 
 ## Prep
 
-mu-editor:  [download](https://codewith.mu/en/download)
-micro-bit
-gps module
-wire stripper
-soldering iron
-heatshrink tube
-hot air gun
+- mu-editor:  [download](https://codewith.mu/en/download)
+- micro-bit
+- gps module
+- wire stripper
+- soldering iron
+- heatshrink tube
+- hot air gun
 
 
 
@@ -25,16 +25,26 @@ this code will be in python as we need to use advanced features not found in the
 Python is a very common programming language that is pretty easy to learn.  However, the goal of this activity is to get the GPS going, so we will use a "copy-paste" approach to code the micro:bit.  You could simply load the files on the device without looking at any of it, but by copy-pasting you can at least get a sense of if this might interest you for other projects.  
 To learn more about the python programming language, [w3schools](https://www.w3schools.com/python/default.asp) is a great place to start.
 
-1. Create new file and save it as "GPStoCSV.py"
+Press A to start capturing your current location.
+Press A again to stop capturing.
+
+The GPS locations will be stored on the micro:bit on files called gps01.csv, gps02.csv, etc.
+
+
+1. 
+> Create new file and save it as "GPStoCSV.py"
 2. 
 > we start by importing the library to run the micro:bit:
 
-`from microbit import *`
+```py
+from microbit import *
+```
 
 3. 
 > this function will activate the communication between the GPS and the micro:bit
 
-`def initGPS():
+```py
+def initGPS():
     uart.init(baudrate=9600, bits=8, parity=None, stop=1, tx=pin1, rx=pin2)
     sleep(500)
     INIT_SEQUENCE_RMC = [
@@ -55,12 +65,13 @@ To learn more about the python programming language, [w3schools](https://www.w3s
         uart.write(i)
         sleep(100)
     uart.init(115200) # on redonne la main pour la communication USB
-`
+```
 
 4. 
 > this function will save the GPS location to a file on the micro:bit
 
-`def saveFile():
+```py
+def saveFile():
     global noFile
     noFile += 1
     with open("gps{:02d}.csv".format(noFile),'wt') as myCSV :
@@ -71,12 +82,15 @@ To learn more about the python programming language, [w3schools](https://www.w3s
                 else:
                     myCSV.write(m+"\n")
         myCSV.close()
-    listeNMEA.clear()`
+    listeNMEA.clear()
+```
 
 5. 
+    
 > we initiate the GPS module and assign variables to run the program
 
-`# Debut du programme
+```py
+# Debut du programme
 
 initGPS()
 
@@ -85,12 +99,14 @@ msg=""
 listeNMEA=[]
 captureMode=False
 display.show(Image.HAPPY)
-noFile=0`
+noFile=0
+```
 
 6. 
 > this will loop forever as long as the micro:bit is powered
 
-`while True:
+```py
+while True:
     if button_a.was_pressed():
         # Bouton a : change le mode capture
         captureMode = not captureMode
@@ -127,7 +143,15 @@ noFile=0`
                     msg="$"+m
         if len(listeNMEA)>20:
             saveFile()
-`
+```
+
+
+The complete code can be found [here]()
 
 
 ## Part 2
+### Find your way to a GPS location
+
+
+
+
