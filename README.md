@@ -54,7 +54,8 @@ To learn more about the python programming language, [w3schools](https://www.w3s
     for i in INIT_SEQUENCE_RMC:
         uart.write(i)
         sleep(100)
-    uart.init(115200) # on redonne la main pour la communication USB`
+    uart.init(115200) # on redonne la main pour la communication USB
+`
 
 4. 
 > this function will save the GPS location to a file on the micro:bit
