@@ -32,7 +32,7 @@ The GPS locations will be stored on the micro:bit on files called gps01.csv, gps
 
 2. Open Mu Editor. Make sure you are in the "BBC micro:bit" mode.
 
-![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/Gifs/MuE_Mode.gif)
+![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/Gifs/MuE_Mode_v2.gif)
 
 3. Load the GPStoCSV.py file you just downloaded is step 1.
 
