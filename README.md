@@ -14,8 +14,6 @@ You will need the following to do the activity:
 
 
 
-
-
 ## Part 1 : Get GPS to store location on device
 
 *Start Mu Editor and get code on the micro:bit*
@@ -30,113 +28,19 @@ Press A again to stop capturing.
 
 The GPS locations will be stored on the micro:bit on files called gps01.csv, gps02.csv, etc.
 
-1. As the code is quite complexe, it is provided in it's entirety [here](). Download it to your computer.
+1. As the code is quite complexe, it is provided in it's entirety [here](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py). Download it to your computer by right-clicking anywhere on the page and Save as...
 
-2. Open Mu Editor
+2. Open Mu Editor. Make sure you are in the "BBC micro:bit" mode.
 
-3. this function will activate the communication between the GPS and the micro:bit
+![set Mu to micro:bit mode](http://i.imgur.com/OUkLi.gif | width=300)
 
-```py
-def initGPS():
-    uart.init(baudrate=9600, bits=8, parity=None, stop=1, tx=pin1, rx=pin2)
-    sleep(500)
-    INIT_SEQUENCE_RMC = [
-    b"\xB5\x62\x06\x08\x06\x00\x20\x4E\x01\x00\x01\x00\x84\x00\xB5\x62\x06\x08\x00\x00\x0E\x30",                 # Frequence
-    b"\x24\x45\x49\x47\x50\x51\x2c\x44\x54\x4d\x2a\x33\x42\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x0a\x00\x04\x23", # Disable GPDTM
-    b"\x24\x45\x49\x47\x50\x51\x2c\x47\x42\x53\x2a\x33\x30\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x09\x00\x03\x21", # Disable GPGBS
-    b"\x24\x45\x49\x47\x50\x51\x2c\x47\x47\x41\x2a\x32\x37\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x00\x00\xfa\x0f", # Disable GPGGA
-    b"\x24\x45\x49\x47\x50\x51\x2c\x47\x52\x53\x2a\x32\x30\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x06\x00\x00\x1b", # Disable GPGRS
-    b"\x24\x45\x49\x47\x50\x51\x2c\x47\x53\x41\x2a\x33\x33\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x02\x00\xfc\x13", # Disable GPGSA
-    b"\x24\x45\x49\x47\x50\x51\x2c\x47\x53\x54\x2a\x32\x36\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x07\x00\x01\x1d", # Disable GPGST
-    b"\x24\x45\x49\x47\x50\x51\x2c\x47\x53\x56\x2a\x32\x34\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x03\x00\xfd\x15", # Disable GPGSV
-    b"\x24\x45\x49\x47\x50\x51\x2c\x47\x4c\x4c\x2a\x32\x31\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x01\x00\xfb\x11", # Disable GPGLL
-    b"\x24\x45\x49\x47\x50\x51\x2c\x56\x54\x47\x2a\x32\x33\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x05\x00\xff\x19", # Disable GPVTG
-    b"\x24\x45\x49\x47\x50\x51\x2c\x5a\x44\x41\x2a\x33\x39\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x08\x00\x02\x1f", # Disable GPZDA
-    b"\x24\x45\x49\x47\x50\x51\x2c\x52\x4d\x43\x2a\x33\x41\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x04\x01\xff\x18"  # Enable  GPRMC
-    ]
-    for i in INIT_SEQUENCE_RMC:
-        uart.write(i)
-        sleep(100)
-    uart.init(115200) # on redonne la main pour la communication USB
-```
+3. Load the GPStoCSV.py file you just downloaded is step 1.
 
-4. this function will save the GPS location to a file on the micro:bit
+4. This code is pretty straight forward.  First, it establishes a connection with the GPS module.  Then, you use the A button to switch between "standby mode", where nothing is really happening, and "record mode", where your current location is being written every few seconds to a file on the micro:bit.  By pressing the B button, you can have a reminder of which mode you are in.  That's all you need to store GPS locations!
 
-```py
-def saveFile():
-    global noFile
-    noFile += 1
-    with open("gps{:02d}.csv".format(noFile),'wt') as myCSV :
-        for m in listeNMEA:
-            if m != "" and m[0] == '$':
-                if m[-1] == "\n":
-                    myCSV.write(m)
-                else:
-                    myCSV.write(m+"\n")
-        myCSV.close()
-    listeNMEA.clear()
-```
+<br>
+Now let's see how we can retrieve those locations, and find them again.
 
-
-5. we initiate the GPS module and assign variables to run the program
-
-```py
-# Debut du programme
-
-initGPS()
-
-# Variables globales
-msg=""
-listeNMEA=[]
-captureMode=False
-display.show(Image.HAPPY)
-noFile=0
-```
-
-6. this will loop forever as long as the micro:bit is powered
-
-```py
-while True:
-    if button_a.was_pressed():
-        # Bouton a : change le mode capture
-        captureMode = not captureMode
-        if captureMode:
-            uart.init(baudrate=9600, bits=8, parity=None, stop=1, tx=pin1, rx=pin2)
-            display.show(Image.TARGET)
-            msg=""
-        else:
-            saveFile()
-            uart.init(115200)
-            display.show(Image.HAPPY)
-
-    if button_b.was_pressed():
-        # Affiche l'etat
-        display.show(len(listeNMEA))
-        sleep(1000)
-        display.show(Image.TRIANGLE)
-        sleep(500)
-        display.show(noFile)
-        sleep(1000)
-        if captureMode:
-            display.show(Image.TARGET)
-        else:
-            display.show(Image.HAPPY)
-
-    if captureMode :
-        if uart.any():
-            incoming = uart.readline().format("%s")
-            sp=incoming.split("$")
-            msg += sp[0]
-            if len(sp)>1:
-                for m in sp[1:]:
-                    listeNMEA.append(msg)
-                    msg="$"+m
-        if len(listeNMEA)>20:
-            saveFile()
-```
-
-
-The complete code can be found [here]().  You can compare it to what you have copy/pasted to see if there are any errors in your code.
 
 <br>
 
@@ -155,13 +59,7 @@ Alright, let's do this!
 
 <br>
 
-1. let's import the libraries
-```py
-# import libraries we will be using
-from microbit import *
-import math
-import speech
-```
+1. Download the code [here](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/CompassWithGPSData.py) and save it as we have done previously.
 
 2. let's set the variables and constants needed for this program to run.
 > - don't forget to change the GPS location next to DESTINATION to the one of your choice.
