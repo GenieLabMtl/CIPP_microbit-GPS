@@ -10,7 +10,7 @@ The code we will use today works pretty easily:
 > Press A again to stop capturing.
 
 That's all we need! The GPS locations will be stored on the micro:bit on files called gps01.csv, gps02.csv, etc. and will look something like this:
-![GPS locations stored on csv file](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture.png)
+![GPS locations stored on csv file](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture_small.png)
 The coordinates are stored in the Degrees Minutes format. To use them in the next step or in Google Earth, for example, we will need to convert them to Decimal degree, which can be done conveniently on [this website](https://coordinates-converter.com/en/).
 
 **Let's do this!**
