@@ -6,8 +6,8 @@ We want to store a GPS location that we like. Perfect! Turns out we can do that 
 
 The code we will use today works pretty easily:
 
-Press A to start capturing your current location.
-Press A again to stop capturing.
+> Press A to start capturing your current location.
+> Press A again to stop capturing.
 
 That's all we need! The GPS locations will be stored on the micro:bit on files called gps01.csv, gps02.csv, etc. and will look something like this:
 ![GPS locations stored on csv file](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture.png)
@@ -18,9 +18,12 @@ The coordinates are stored in the Degrees Minutes format. To use them in the nex
 ### The code
 
 1. As the code is quite complexe, it is provided in it's entirety [here](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py). Download it to your computer by right-clicking anywhere on the page and Save as...
+<br>
+
 ![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/saveFileonGit.gif)
 
 2. Open Mu Editor. Make sure you are in the "BBC micro:bit" mode.
+<br>
 
 ![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/MuE_Mode_v2.gif)
 
