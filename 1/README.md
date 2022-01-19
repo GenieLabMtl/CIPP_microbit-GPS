@@ -10,7 +10,7 @@ Press A to start capturing your current location.
 Press A again to stop capturing.
 
 That's all we need! The GPS locations will be stored on the micro:bit on files called gps01.csv, gps02.csv, etc. and will look something like this:
-![GPS locations stored on csv file](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/Gifs/MuE_Mode_v2.gif)
+![GPS locations stored on csv file](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture.png)
 The coordinates are stored in the Degrees Minutes format. To use them in the next step or in Google Earth, for example, we will need to convert them to Decimal degree, which can be done conveniently on [this website](https://coordinates-converter.com/en/).
 
 **Let's do this!**
@@ -18,11 +18,11 @@ The coordinates are stored in the Degrees Minutes format. To use them in the nex
 ### The code
 
 1. As the code is quite complexe, it is provided in it's entirety [here](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py). Download it to your computer by right-clicking anywhere on the page and Save as...
-![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/Gifs/MuE_Mode_v2.gif)
+![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/saveFileonGit.gif)
 
 2. Open Mu Editor. Make sure you are in the "BBC micro:bit" mode.
 
-![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/Gifs/MuE_Mode_v2.gif)
+![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/MuE_Mode_v2.gif)
 
 3. Load the GPStoCSV.py file you just downloaded is step 1.
 
@@ -33,7 +33,7 @@ The coordinates are stored in the Degrees Minutes format. To use them in the nex
 ### The components
 
 Once the code is done, we need to assemble the components. The various components - battery holder, GPS module, micro:bit - should fit pretty well in the canoe you've printed.  We can see on this image taken from the datasheet which cables are which.  *Be careful!* The colours of the cables are not always the same, so only the order matters.
-![GPS cables order]()
+![GPS cables order image](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPS_Connectors.png)
 
 
 Here are the connections that need to be made:
