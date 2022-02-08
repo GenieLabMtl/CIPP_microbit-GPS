@@ -6,13 +6,13 @@ import speech
 # Variables and constants
 
 # our current position, updated continuously by the GPS module
-currentLocation = [45.530200884174725, -73.55110194184894]
+currentLocation = [0.0, 0.0]
 
-# this is where we want to go
-DESTINATION = (45.53465356340576, -73.56085768454646)
+# this is where we want to go, needs to be formatted for the GPS module in Degrees Minutes, no space.
+DESTINATION = (4531.82276, -7333.06061)
 
 # How close we need to be to the destination to trigger our "We're here" message
-DIST_THRESH = 0.0001
+DIST_THRESH = 1000.0
 
 # to assemble the incoming data from the GPS module
 msg = ""
@@ -52,7 +52,7 @@ def angleFromCoordinate(lat1, long1, lat2, long2):
 
     # bring between -180 and 180, 0 being North
     if brng > 180:
-        brng = -(360 - heading)
+        brng = -(360 - brng)
 
     return brng
 
@@ -77,25 +77,25 @@ def displayDirection():
         azimut += 360
 
     # E and W must be inverted
-    if -22.5 <= azimut < 22.5:
-        display.show(Image.ARROW_N)
-    elif 22.5 <= azimut < 67.5:
-        display.show(Image.ARROW_NW)
-    elif 67.5 <= azimut < 112.5:
-        display.show(Image.ARROW_W)
-    elif 112.5 <= azimut < 157.5:
-        display.show(Image.ARROW_SW)
-    elif 157.5 <= azimut <= 180 or -180 <= azimut < -157.5:
-        display.show(Image.ARROW_S)
-    elif -157.5 <= azimut < -112.5:
-        display.show(Image.ARROW_SE)
-    elif -112.5 <= azimut < -67.5:
-        display.show(Image.ARROW_E)
-    elif -67.5 <= azimut < -22.5:
-        display.show(Image.ARROW_NE)
-    else:
-        # is all is working properly, this should never display
-        display.show(Image.CONFUSED)
+    # if -22.5 <= azimut < 22.5:
+    #     display.show(Image.ARROW_N)
+    # elif 22.5 <= azimut < 67.5:
+    #     display.show(Image.ARROW_NW)
+    # elif 67.5 <= azimut < 112.5:
+    #     display.show(Image.ARROW_W)
+    # elif 112.5 <= azimut < 157.5:
+    #     display.show(Image.ARROW_SW)
+    # elif 157.5 <= azimut <= 180 or -180 <= azimut < -157.5:
+    #     display.show(Image.ARROW_S)
+    # elif -157.5 <= azimut < -112.5:
+    #     display.show(Image.ARROW_SE)
+    # elif -112.5 <= azimut < -67.5:
+    #     display.show(Image.ARROW_E)
+    # elif -67.5 <= azimut < -22.5:
+    #     display.show(Image.ARROW_NE)
+    # else:
+    #     # is all is working properly, this should never display
+    #     display.show(Image.CONFUSED)
 
 
 def initGPS():
@@ -103,7 +103,8 @@ def initGPS():
     uart.init(baudrate=9600, bits=8, parity=None, stop=1, tx=pin1, rx=pin2)
     sleep(500)
     INIT_SEQUENCE_RMC = [
-        b"\xB5\x62\x06\x08\x06\x00\x20\x4E\x01\x00\x01\x00\x84\x00\xB5\x62\x06\x08\x00\x00\x0E\x30",  # Frequence
+        b"\xB5\x62\x06\x08\x06\x00\xE8\x03\x01\x00\x01\x00\x01\x39",                 # Frequence 1s
+        #b"\xB5\x62\x06\x08\x06\x00\xC8\x00\x01\x00\x01\x00\xDE\x6A\xB5\x62\x06\x08\x00\x00\x0E\x30",                 # Frequence 5Hz
         b"\x24\x45\x49\x47\x50\x51\x2c\x44\x54\x4d\x2a\x33\x42\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x0a\x00\x04\x23",  # Disable GPDTM
         b"\x24\x45\x49\x47\x50\x51\x2c\x47\x42\x53\x2a\x33\x30\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x09\x00\x03\x21",  # Disable GPGBS
         b"\x24\x45\x49\x47\x50\x51\x2c\x47\x47\x41\x2a\x32\x37\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x00\x00\xfa\x0f",  # Disable GPGGA
@@ -121,27 +122,38 @@ def initGPS():
         sleep(100)
 
 
+### BUG HERE !!!!
 def getCurrentLocation():
     # parse the incoming message from the GPS module
-    if listeNMEA[0][17] == "A":
-        currentLocation[0] = float(listeNMEA[0][19:28])
-        if listeNMEA[0][30] == "S":
-            currentLocation[0] = -currentLocation[0]
-        currentLocation[1] = float(listeNMEA[0][32:42])
-        if listeNMEA[0][44] == "W":
-            currentLocation[1] = -currentLocation[1]
+    #if len(listeNMEA) > 0:
+        # make sure there is a valid message
+    if len(listeNMEA[0]) >= 45:
+        if listeNMEA[-1][0:5] == "$GPRMC":
+            if listeNMEA[-1][17] == "A":
+                currentLocation[0] = float(listeNMEA[-1][19:28])
+                if listeNMEA[-1][30] == "S":
+                    currentLocation[0] = -currentLocation[0]
+                currentLocation[1] = float(listeNMEA[-1][32:42])
+                if listeNMEA[-1][44] == "W":
+                    currentLocation[1] = -currentLocation[1]
+                display.show(Image.YES)
+        else:
+            display.show(Image.TRIANGLE_LEFT)
     else:
-        display.show(Image.NO)
-    listeNMEA.clear()
+        display.show(Image.TRIANGLE)
+    #else:
+        #display.show(Image.NO)
+
+
 
 
 def soundWhenClose(message):
     # check if close to destination, taking into account E/W N/S coordinate values
     # returns True if within threshold distance of the destination
-    if (abs(currentLocation[0]) - abs(DESTINATION[0])) < DIST_THRESH and
-        (abs(currentLocation[1]) - abs(DESTINATION[1])) < DIST_THRESH and
-        (((currentLocation[0]== DESTINATION[0]) & (currentLocation[0]==0)) | (currentLocation[0] * DESTINATION[0] > 0)) and
-        (((currentLocation[1]== DESTINATION[1]) & (currentLocation[1]==0)) | (currentLocation[1] * DESTINATION[1] > 0)) :
+    if (abs(abs(DESTINATION[0]) - abs(currentLocation[0])) < DIST_THRESH) and\
+        (abs(abs(DESTINATION[1]) - abs(currentLocation[1])) < DIST_THRESH):# and\
+        #(((currentLocation[0]== DESTINATION[0]) & (currentLocation[0]==0)) | (currentLocation[0] * DESTINATION[0] > 0)) and\
+        #(((currentLocation[1]== DESTINATION[1]) & (currentLocation[1]==0)) | (currentLocation[1] * DESTINATION[1] > 0)) :
 
         # if we are close enough to the spot, a message will be heard, emitted from the micro:bit's speaker
         speech.say(message, pitch=120, speed=120, mouth=150, throat=170)
@@ -166,7 +178,7 @@ while True:
     # first get location from GPS
     if captureMode :
         if uart.any():
-            incoming = uart.readline().format("%s")
+            incoming = uart.readline().decode().format("%s")
             sp=incoming.split("$")
             msg += sp[0]
             if len(sp)>1:
@@ -174,6 +186,7 @@ while True:
                     listeNMEA.append(msg)
                     msg="$"+m
             getCurrentLocation()
+            #listeNMEA.clear()
 
     # then see if we are where we want to go to
     if soundWhenClose(SM_END):
