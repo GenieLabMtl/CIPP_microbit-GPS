@@ -49,4 +49,5 @@ Here are the connections that need to be made:
 If you now power the micro:bit, you should also see the red light come up on the GPS module!  The GPS module needs to lock on satelites to work properly, so it will not work indoors.  Once you are outside and it has acquired the signal of at least 2 satelites, it will turn on a green light, meaning it can now work properly! Press on that A button and wait a few seconds to record a location, then press it again to stop recording.  That's it!  Go back indoors to retrieve the data and proceed with the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/2).
 
 
+
 <br>
