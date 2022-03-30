@@ -1,26 +1,33 @@
 # CIPP_microbit-GPS
 
 
-## Part 2
-### Find your way to a GPS location
+## Partie 2
+### Trouvez votre chemin vers une position GPS
 
-We will now see how we can get the micro:bit to point an arrow towards the GPS location we want to reach, effectively working as a compass pointing to that location instead of the magnetic North.
-
-<br>
-
-By integrating text-to-speech elements, we can also turn this program in a (very) basic AI assistant!  When the destination is reached, we will hear a vocal message saying so.
+Nous allons maintenant voir comment nous pouvons faire en sorte que le micro:bit pointe une flèche vers l'emplacement GPS que nous voulons atteindre, fonctionnant comme une boussole pointant vers cet emplacement plutôt que le Nord magnétique.
 
 <br>
 
-Alright, let's do this!
+En intégrant des éléments de synthèse vocale, nous pouvons également transformer ce programme en un assistant IA (très) basique ! Lorsque la destination est atteinte, nous entendrons un message vocal nous en informant.
 
 <br>
 
-1. Download the code [here](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/CompassWithGPSData.py) and save it as we have done previously.
+Et c'est parti !
 
-2. let's set the variables and constants needed for this program to run.
-> - don't forget to change the GPS location next to DESTINATION to the one of your choice.
-> - you can change the text-to-speech messages next to SM_Start and SM_End.
+<br>
+
+1. Téléchargez le code [ici](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/CompassWithGPSData.py) et enregistrez-le comme nous l'avons fait précédemment.
+
+2. Ouvrez-le dans l'éditeur MU
+
+3. Définissons les variables et les constantes nécessaires à l'exécution de ce programme.
+> - n'oubliez pas de changer la position GPS à côté de DESTINATION dans le code par celle de votre choix.
+> - vous pouvez modifier les messages de synthèse vocale à côté de SM_START et SM_END.
+
+*En programmation, les constantes - des valeurs qui ne changent pas durant le programme - sont habituellement nommées avec un nom écrit en MAJUSCULES.*
+
+Voici la section du code en question :
+
 ```py
 #Variables and constants
 
@@ -43,11 +50,15 @@ listeNMEA = []
 captureMode = True
 
 # Speech messages
-SM_Start = "Let's go!"
+SM_START = "Let's go!"
 SM_END = "This is the spot"
 ```
 
-3. initiate the internal compass
+4. Installer le code sur le micro:bit, et aller dehors!
+
+***Tout ce qui suit est simplement là pour indiquer ce que fait le code. Rien n'a besoin d'être modifier pour que ça fonctionne.***
+
+5. initiate the internal compass
 
 ```py
 # Functions
@@ -56,7 +67,7 @@ def initCompass():
     compass.calibrate()
 ```
 
-4. some maths to have the compass point to the GPS location
+6. des formules mathématiques pour que le compas pointe vers la position GPS
 
 ```py
 def angleFromCoordinate(lat1, long1, lat2, long2):
@@ -82,7 +93,7 @@ def angleFromCoordinate(lat1, long1, lat2, long2):
     return brng
 ```
 
-5. return the current direction the micro:bit is pointing relative to our target destination
+7. retourne la direction dans laquelle le micro:bit fait face, relativement à notre destination cible
 
 ```py
 def currentHeading():
@@ -92,7 +103,9 @@ def currentHeading():
         heading = -(360 - heading)
     return heading
 ```
-6. display the arrow on the screen
+
+8. affiche la flèche à l'écran
+
 ```py
 def displayDirection():
     # once we have our current position, display an arrow pointing to the target GPS location
@@ -127,7 +140,8 @@ def displayDirection():
         display.show(Image.CONFUSED)
 ```
 
-7. initiate the GPS module, same as we've done in the previous program
+9. lance le programme du module GPS, comme dans l'activité précédente
+
 ```py
 def initGPS():
     # establish communication with the GPS module and send init messages to receive only GPRMC data
@@ -152,7 +166,8 @@ def initGPS():
         sleep(100)
 ```
 
-8. function to fetch current GPS location
+10. fonction pour récupérer la position GPS actuelle
+
 ```py
 def getCurrentLocation():
     # parse the incoming message from the GPS module
@@ -168,7 +183,8 @@ def getCurrentLocation():
     listeNMEA.clear()
 ```
 
-9. check if we have arrived, and make a sound when the destination is reached.
+11. vérifie si nous sommes arrivés, et fait un son lorsque la destination est atteinte.
+
 ```py
 def soundWhenClose(message):
     # check if close to destination, taking into account E/W N/S coordinate values
@@ -189,13 +205,13 @@ def soundWhenClose(message):
         return False
 ```
 
-10. run the program
+12. lancer le programme
 ```py
 # Start program here
 initCompass()
 initGPS()
 
-speech.say(SM_Start, pitch=120, speed=120, mouth=150, throat=170)
+speech.say(SM_START, pitch=120, speed=120, mouth=150, throat=170)
 
 while True:
 

@@ -1,18 +1,42 @@
-# import libraries we will be using
-from microbit import *
-import math
-import speech
+# CIPP_microbit-GPS
 
-# Variables and constants
+
+## Part 2
+### Find your way to a GPS location
+
+We will now see how we can get the micro:bit to point an arrow towards the GPS location we want to reach, effectively working as a compass pointing to that location instead of the magnetic North.
+
+<br>
+
+By integrating text-to-speech elements, we can also turn this program in a (very) basic AI assistant!  When the destination is reached, we will hear a vocal message saying so.
+
+<br>
+
+Alright, let's do this!
+
+<br>
+
+1. Download the code [here](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/CompassWithGPSData.py) and save it as we have done previously.
+
+2. Open it in the MU editor.
+
+3. Let's set the variables and constants needed for this program to run.
+> - don't forget to change the GPS location next to DESTINATION in the code to the one of your choice.
+> - you can change the text-to-speech messages next to SM_START and SM_END.
+
+Here is the relevant part of the code:
+
+```py
+#Variables and constants
 
 # our current position, updated continuously by the GPS module
-currentLocation = [0.0, 0.0]
+currentLocation = [45.530200884174725, -73.55110194184894]
 
-# this is where we want to go, needs to be formatted for the GPS module in Degrees Minutes, no space.
-DESTINATION = (4531.82276, -7333.06061)
+# this is where we want to go
+DESTINATION = (45.53465356340576, -73.56085768454646)
 
 # How close we need to be to the destination to trigger our "We're here" message
-DIST_THRESH = 1000.0
+DIST_THRESH = 0.0001
 
 # to assemble the incoming data from the GPS module
 msg = ""
@@ -26,14 +50,24 @@ captureMode = True
 # Speech messages
 SM_START = "Let's go!"
 SM_END = "This is the spot"
+```
 
+4. Install the code on the micro:bit, and go outside!
 
+***Everything that follows is simply to let you know what does what in the code.  Nothing needs to be changed for it to work.***
+
+5. initiate the internal compass
+
+```py
 # Functions
 
 def initCompass():
     compass.calibrate()
+```
 
+6. some maths to have the compass point to the GPS location
 
+```py
 def angleFromCoordinate(lat1, long1, lat2, long2):
     # calculate the angle between our current position and the target location
     # this will return the bearing relative to the North
@@ -52,19 +86,25 @@ def angleFromCoordinate(lat1, long1, lat2, long2):
 
     # bring between -180 and 180, 0 being North
     if brng > 180:
-        brng = -(360 - brng)
+        brng = -(360 - heading)
 
     return brng
+```
 
+7. return the current direction the micro:bit is pointing relative to our target destination
 
+```py
 def currentHeading():
     # get the heading towards which the micro:bit is pointing
     heading = compass.heading()
     if heading > 180:
         heading = -(360 - heading)
     return heading
+```
 
+8. display the arrow on the screen
 
+```py
 def displayDirection():
     # once we have our current position, display an arrow pointing to the target GPS location
     direction = angleFromCoordinate(
@@ -77,34 +117,36 @@ def displayDirection():
         azimut += 360
 
     # E and W must be inverted
-    # if -22.5 <= azimut < 22.5:
-    #     display.show(Image.ARROW_N)
-    # elif 22.5 <= azimut < 67.5:
-    #     display.show(Image.ARROW_NW)
-    # elif 67.5 <= azimut < 112.5:
-    #     display.show(Image.ARROW_W)
-    # elif 112.5 <= azimut < 157.5:
-    #     display.show(Image.ARROW_SW)
-    # elif 157.5 <= azimut <= 180 or -180 <= azimut < -157.5:
-    #     display.show(Image.ARROW_S)
-    # elif -157.5 <= azimut < -112.5:
-    #     display.show(Image.ARROW_SE)
-    # elif -112.5 <= azimut < -67.5:
-    #     display.show(Image.ARROW_E)
-    # elif -67.5 <= azimut < -22.5:
-    #     display.show(Image.ARROW_NE)
-    # else:
-    #     # is all is working properly, this should never display
-    #     display.show(Image.CONFUSED)
+    if -22.5 <= azimut < 22.5:
+        display.show(Image.ARROW_N)
+    elif 22.5 <= azimut < 67.5:
+        display.show(Image.ARROW_NW)
+    elif 67.5 <= azimut < 112.5:
+        display.show(Image.ARROW_W)
+    elif 112.5 <= azimut < 157.5:
+        display.show(Image.ARROW_SW)
+    elif 157.5 <= azimut <= 180 or -180 <= azimut < -157.5:
+        display.show(Image.ARROW_S)
+    elif -157.5 <= azimut < -112.5:
+        display.show(Image.ARROW_SE)
+    elif -112.5 <= azimut < -67.5:
+        display.show(Image.ARROW_E)
+    elif -67.5 <= azimut < -22.5:
+        display.show(Image.ARROW_NE)
+    else:
+        # is all is working properly, this should never display
+        display.show(Image.CONFUSED)
+```
 
+9. initiate the GPS module, same as we've done in the previous program
 
+```py
 def initGPS():
     # establish communication with the GPS module and send init messages to receive only GPRMC data
     uart.init(baudrate=9600, bits=8, parity=None, stop=1, tx=pin1, rx=pin2)
     sleep(500)
     INIT_SEQUENCE_RMC = [
-        b"\xB5\x62\x06\x08\x06\x00\xE8\x03\x01\x00\x01\x00\x01\x39",                 # Frequence 1s
-        #b"\xB5\x62\x06\x08\x06\x00\xC8\x00\x01\x00\x01\x00\xDE\x6A\xB5\x62\x06\x08\x00\x00\x0E\x30",                 # Frequence 5Hz
+        b"\xB5\x62\x06\x08\x06\x00\x20\x4E\x01\x00\x01\x00\x84\x00\xB5\x62\x06\x08\x00\x00\x0E\x30",  # Frequence
         b"\x24\x45\x49\x47\x50\x51\x2c\x44\x54\x4d\x2a\x33\x42\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x0a\x00\x04\x23",  # Disable GPDTM
         b"\x24\x45\x49\x47\x50\x51\x2c\x47\x42\x53\x2a\x33\x30\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x09\x00\x03\x21",  # Disable GPGBS
         b"\x24\x45\x49\x47\x50\x51\x2c\x47\x47\x41\x2a\x32\x37\x0d\x0a\xb5\x62\x06\x01\x03\x00\xf0\x00\x00\xfa\x0f",  # Disable GPGGA
@@ -120,40 +162,35 @@ def initGPS():
     for i in INIT_SEQUENCE_RMC:
         uart.write(i)
         sleep(100)
+```
 
+10. function to fetch current GPS location
 
-### BUG HERE !!!!
+```py
 def getCurrentLocation():
     # parse the incoming message from the GPS module
-    #if len(listeNMEA) > 0:
-        # make sure there is a valid message
-    if len(listeNMEA[0]) >= 45:
-        if listeNMEA[-1][0:5] == "$GPRMC":
-            if listeNMEA[-1][17] == "A":
-                currentLocation[0] = float(listeNMEA[-1][19:28])
-                if listeNMEA[-1][30] == "S":
-                    currentLocation[0] = -currentLocation[0]
-                currentLocation[1] = float(listeNMEA[-1][32:42])
-                if listeNMEA[-1][44] == "W":
-                    currentLocation[1] = -currentLocation[1]
-                display.show(Image.YES)
-        else:
-            display.show(Image.TRIANGLE_LEFT)
+    if listeNMEA[0][17] == "A":
+        currentLocation[0] = float(listeNMEA[0][19:28])
+        if listeNMEA[0][30] == "S":
+            currentLocation[0] = -currentLocation[0]
+        currentLocation[1] = float(listeNMEA[0][32:42])
+        if listeNMEA[0][44] == "W":
+            currentLocation[1] = -currentLocation[1]
     else:
-        display.show(Image.TRIANGLE)
-    #else:
-        #display.show(Image.NO)
+        display.show(Image.NO)
+    listeNMEA.clear()
+```
 
+11. check if we have arrived, and make a sound when the destination is reached.
 
-
-
+```py
 def soundWhenClose(message):
     # check if close to destination, taking into account E/W N/S coordinate values
     # returns True if within threshold distance of the destination
-    if (abs(abs(DESTINATION[0]) - abs(currentLocation[0])) < DIST_THRESH) and\
-        (abs(abs(DESTINATION[1]) - abs(currentLocation[1])) < DIST_THRESH):# and\
-        #(((currentLocation[0]== DESTINATION[0]) & (currentLocation[0]==0)) | (currentLocation[0] * DESTINATION[0] > 0)) and\
-        #(((currentLocation[1]== DESTINATION[1]) & (currentLocation[1]==0)) | (currentLocation[1] * DESTINATION[1] > 0)) :
+    if (abs(currentLocation[0]) - abs(DESTINATION[0])) < DIST_THRESH and
+        (abs(currentLocation[1]) - abs(DESTINATION[1])) < DIST_THRESH and
+        (((currentLocation[0]== DESTINATION[0]) & (currentLocation[0]==0)) | (currentLocation[0] * DESTINATION[0] > 0)) and
+        (((currentLocation[1]== DESTINATION[1]) & (currentLocation[1]==0)) | (currentLocation[1] * DESTINATION[1] > 0)) :
 
         # if we are close enough to the spot, a message will be heard, emitted from the micro:bit's speaker
         speech.say(message, pitch=120, speed=120, mouth=150, throat=170)
@@ -164,9 +201,11 @@ def soundWhenClose(message):
         return True
     else:
         return False
+```
 
+12. run the program
 
-
+```py
 # Start program here
 initCompass()
 initGPS()
@@ -178,7 +217,7 @@ while True:
     # first get location from GPS
     if captureMode :
         if uart.any():
-            incoming = uart.readline().decode().format("%s")
+            incoming = uart.readline().format("%s")
             sp=incoming.split("$")
             msg += sp[0]
             if len(sp)>1:
@@ -186,7 +225,6 @@ while True:
                     listeNMEA.append(msg)
                     msg="$"+m
             getCurrentLocation()
-            #listeNMEA.clear()
 
     # then see if we are where we want to go to
     if soundWhenClose(SM_END):
@@ -194,4 +232,5 @@ while True:
 
     # and finally display the direction of the objective if we are not there yet
     displayDirection()
+```
 

@@ -7,6 +7,7 @@ We want to store a GPS location that we like. Perfect! Turns out we can do that 
 The code we will use today works pretty easily:
 
 > Press A to start capturing your current location.
+> Wait a few seconds to make sure we have a few valid readings.
 > Press A again to stop capturing.
 
 That's all we need! The GPS locations will be stored on the micro:bit on files called gps01.csv, gps02.csv, etc. and will look something like this:
@@ -29,7 +30,7 @@ The coordinates are stored in the Degrees Minutes format. To use them in the nex
 
 3. Load the GPStoCSV.py file you just downloaded is step 1.
 
-4. This code is pretty straight forward.  First, it establishes a connection with the GPS module.  Then, you use the A button to switch between "standby mode", where nothing is really happening, and "record mode", where your current location is being written every few seconds to a file on the micro:bit.  By pressing the B button, you can have a reminder of which mode you are in.  That's all you need to store GPS locations!
+4. This code is pretty straight forward.  First, it establishes a connection with the GPS module.  Then, you use the A button to switch between "standby mode", where nothing is really happening, and "record mode", where your current location is being written every few seconds to a file on the micro:bit.  By pressing the B button, you can have a reminder of which mode you are in: a target in capture mode, and a smile in standby mode.  That's all you need to store GPS locations!
 
 <br>
 
@@ -46,9 +47,19 @@ Here are the connections that need to be made:
 3. TX (T on the board) to 2 on m:bit
 4. VCC (V on the board) to 3V on m:bit
 
-If you now power the micro:bit, you should also see the red light come up on the GPS module!  The GPS module needs to lock on satelites to work properly, so it will not work indoors.  Once you are outside and it has acquired the signal of at least 2 satelites, it will turn on a green light, meaning it can now work properly! Press on that A button and wait a few seconds to record a location, then press it again to stop recording.  That's it!  Go back indoors to retrieve the data and proceed with the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/2).
+If you now power the micro:bit, you should also see the red light come up on the GPS module!  The GPS module needs to lock on satelites to work properly, so it will not work indoors.  Once you are outside and it has acquired the signal of at least 2 satelites, it will turn on a green light, meaning it can now work properly! Press on the A button and wait a few seconds to record a location, then press it again to stop recording.  That's it!  Go back indoors to retrieve the data and proceed with the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/2).
 
 
+### Retrieve the coordinates
 
+1. In the Mu editor, click on the *File* icon at the top.
+2. In the windows that appear at the bottom, drag the files from the micro:bit to the computer.
+3. The folder where the files are located on the computer is called "mu_code", which is located in the main folder of your computer user account.
+
+![GPS Cables Order Image](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/Mu_File_transfer.png)
+
+*REMINDER: GPS coordinates are stored in our .csv files in Degrees-Minutes format. To use them in the next step or in Google Earth, for example, we will need to convert them to decimal degrees, which can be done easily on [this website](https://coordinates-converter.com/en/).*
 
 <br>
+
+When you're done, proceed to the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/2).
