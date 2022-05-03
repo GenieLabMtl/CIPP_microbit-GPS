@@ -27,26 +27,32 @@ def saveFile():
     global noFile
     noFile += 1
     with open("gps{:02d}.csv".format(noFile),'wt') as myCSV :
-        for m in listeNMEA:
-            if m != "" and m[0] == '$':
-                if m[-1] == "\n":
-                    myCSV.write(m)
-                else:
-                    myCSV.write(m+"\n")
+        for m in listeCOORDS:
+            if m != "":
+                towrite = str(m).replace("[","").replace("]","")
+
+                if m[-1] != "\n":
+                    towrite = towrite + "\n"
+
+                myCSV.write(towrite)
         myCSV.close()
+    listeCOORDS.clear()
     listeNMEA.clear()
 
 # Convertir les coodonnées GPS de Degré Minutes à Degré Décimal
 def converterDM_DD(coordToConvert) :
-    return (((toConvert-toConvert%100)/100) + (toConvert%100)/60)
+    return (((coordToConvert-coordToConvert%100)/100) + (coordToConvert%100)/60)
 
 # Debut du programme
 
+display.show(Image.SAD)
 initGPS()
+display.show(Image.SURPRISED)
 
 # Variables globales
 msg=""
 listeNMEA=[]
+listeCOORDS=[]
 captureMode=False
 display.show(Image.HAPPY)
 noFile=0
@@ -79,29 +85,23 @@ while True:
 
     if captureMode :
         if uart.any():
-            #incoming = uart.readline().decode().format("%s")
-            incoming = str(uart.readline(), 'ascii')
+            incoming = uart.readline().format("%s")
             sp=incoming.split("$")
             msg += sp[0]
-            if len(sp) > 1 :
-                listeNMEA.append(sp)
+            if len(sp)>1:
                 for m in sp[1:]:
-                    splitlist = msg.split(",")
-                    if splitlist[0] == "GPRMC":
-                        listeNMEA.append(splitlist)
-                        msg="$"+m
-
-
-                #if len(splitlist) > 7 :
-                #    # print("m {}, splitlist {}".format(sp[1], splitlist))
-                #    if splitlist[0] == "GPRMC":
-                #        coords = [converterDM_DD(float(splitlist[3])),converterDM_DD(float(splitlist[5]))]
-                #        if splitlist[4] == "S" :
-                #            coords[0] = -coords[0]
-                #        if splitlist[6] == "W" :
-                #            coords[1] = -coords[1]
-                #        listeNMEA.append(sp)
-                #        listeNMEA.append(coords)
-
-        if len(listeNMEA)>20:
+                    listeNMEA.append(msg)
+                    msg="$"+m
+                    splitlist = listeNMEA[-1].split(",")
+                    #sendNMEA("$" + str(splitlist))
+                    if len(splitlist) > 3:
+                        if splitlist[0] == "$GPRMC":
+                            coords = [converterDM_DD(float(splitlist[3])), converterDM_DD(float(splitlist[5]))]
+                            if splitlist[4] == "S" :
+                                coords[0] = -coords[0]
+                            if splitlist[6] == "W" :
+                                coords[1] = -coords[1]
+                            #sendNMEA("$" + str(coords))
+                            listeCOORDS.append(coords)
+        if len(listeCOORDS)>10:
             saveFile()
