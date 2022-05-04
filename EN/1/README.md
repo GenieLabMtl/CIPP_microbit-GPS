@@ -19,9 +19,9 @@ The coordinates are stored in the Degrees Minutes format. To use them in the nex
 ### The code
 
 1. As the code is quite complexe, it is provided in it's entirety. Download it to your computer by right-clicking anywhere on the page and Save as...
-<br>
+
 [Download the code here.](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py). 
-<br>
+<br><br>
 
 ![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/saveFileonGit.gif)
 

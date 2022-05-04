@@ -19,9 +19,9 @@ Les coordonnées sont stockées au format Degrés-Minutes. Pour les utiliser à 
 ### Le code
 
 1. Comme le code est assez complexe, il est fourni dans son intégralité. Téléchargez-le sur votre ordinateur en cliquant avec le bouton droit n'importe où sur la page et en sélectionnant Enregistrer sous...
-<br>
+
 [Télécharger le code ici.](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py)
-<br>
+<br><br>
 
 ![](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/saveFileonGit.gif)
 
