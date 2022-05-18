@@ -1,8 +1,4 @@
-# CIPP_microbit-GPS
-
-
-## Partie 2
-### Trouvez votre chemin vers une position GPS
+<h1 align="center">Trouvez votre chemin vers une position GPS </h1>
 
 Nous allons maintenant voir comment nous pouvons faire en sorte que le micro:bit pointe une flèche vers l'emplacement GPS que nous voulons atteindre, fonctionnant comme une boussole pointant vers cet emplacement plutôt que le Nord magnétique.
 
@@ -21,8 +17,9 @@ Et c'est parti !
 2. Ouvrez-le dans l'éditeur MU
 
 3. Définissons les variables et les constantes nécessaires à l'exécution de ce programme.
-> - n'oubliez pas de changer la position GPS à côté de DESTINATION dans le code par celle de votre choix.
-> - vous pouvez modifier les messages de synthèse vocale à côté de SM_START et SM_END.
+<br>
+> - N'oubliez pas de changer la position GPS à côté de DESTINATION dans le code par celle de votre choix.
+> - Vous pouvez modifier les messages de synthèse vocale à côté de SM_START et SM_END.
 
 *En programmation, les constantes - des valeurs qui ne changent pas durant le programme - sont habituellement nommées avec un nom écrit en MAJUSCULES.*
 
@@ -58,7 +55,7 @@ SM_END = "This is the spot"
 
 ***Tout ce qui suit est simplement là pour indiquer ce que fait le code. Rien n'a besoin d'être modifier pour que ça fonctionne.***
 
-5. initiate the internal compass
+5. Initialise le compas interne
 
 ```py
 # Functions
@@ -67,7 +64,7 @@ def initCompass():
     compass.calibrate()
 ```
 
-6. des formules mathématiques pour que le compas pointe vers la position GPS
+6. Des formules mathématiques pour que le compas pointe vers la position GPS
 
 ```py
 def angleFromCoordinate(lat1, long1, lat2, long2):
@@ -93,7 +90,7 @@ def angleFromCoordinate(lat1, long1, lat2, long2):
     return brng
 ```
 
-7. retourne la direction dans laquelle le micro:bit fait face, relativement à notre destination cible
+7. Retourne la direction dans laquelle le micro:bit fait face, relativement à notre destination cible
 
 ```py
 def currentHeading():
@@ -104,7 +101,7 @@ def currentHeading():
     return heading
 ```
 
-8. affiche la flèche à l'écran
+8. Affiche la flèche à l'écran
 
 ```py
 def displayDirection():
@@ -140,7 +137,7 @@ def displayDirection():
         display.show(Image.CONFUSED)
 ```
 
-9. lance le programme du module GPS, comme dans l'activité précédente
+9. Lance le programme du module GPS, comme dans l'activité précédente
 
 ```py
 def initGPS():
@@ -166,7 +163,7 @@ def initGPS():
         sleep(100)
 ```
 
-10. fonction pour récupérer la position GPS actuelle
+10. Récupére la position GPS actuelle
 
 ```py
 def getCurrentLocation():
@@ -183,7 +180,7 @@ def getCurrentLocation():
     listeNMEA.clear()
 ```
 
-11. vérifie si nous sommes arrivés, et fait un son lorsque la destination est atteinte.
+11. Vérifie si nous sommes arrivés, et fait un son lorsque la destination est atteinte.
 
 ```py
 def soundWhenClose(message):
@@ -205,7 +202,7 @@ def soundWhenClose(message):
         return False
 ```
 
-12. lancer le programme
+12. Lance le programme
 ```py
 # Start program here
 initCompass()
