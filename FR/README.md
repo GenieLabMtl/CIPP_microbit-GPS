@@ -2,24 +2,26 @@
 <br>
 <p align="center"> Bienvenue sur github ! </p>
 <br>
-<p style="margin: 0px">Ce site web, ainsi que d'autres sites similaires comme gitlab et bitbucket, sont utilisés par à peu près tous les programmeurs et programmeuses pour stocker leurs projets, collaborer et conserver un historique de toutes les modifications apportées aux fichiers de projet.  
+Ce site web, ainsi que d'autres sites similaires comme gitlab et bitbucket, sont utilisés par à peu près tous les programmeurs et programmeuses pour stocker leurs projets, collaborer et conserver un historique de toutes les modifications apportées aux fichiers de projet.  
 Les fichiers Readme ("Lisez-moi") – comme celui que vous lisez actuellement – ​​que vous trouverez dans ce projet vous guideront tout au long de l'activité. </p>
+
+<br>
 
 ## Sommaire
 
 - [Étapes de préparation](#étapes-de-préparation)
 - [Lancez Mu Editor et récupérez le code sur le micro:bit](#lancez-mu-editor-et-récupérez-le-code-sur-le-microbit)
 - [Utiliser le GPS pour sauvegarder un emplacement](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1)
-- [Trouvez votre chemin vers une position GPS](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/2)
+- [Trouvez votre chemin vers une position GPS](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/2/1)
 
 ## Étapes de préparation
 Vous aurez besoin des éléments suivants pour faire l'activité. Demandez à quelqu'un qui travaille au lab si quelque chose manque ou ne semble pas fonctionner comme il se doit.
 
-1. <u> Mu Editor </u>: pour éditer et télécharger le code sur l'appareil. [Téléchargez-le ici](https://codewith.mu/en/download) s'il n'est pas déjà installé sur l'ordinateur.
-2. <u> Micro:bit v2 </u>: Ne vous laissez pas tromper par sa simplicité, c'est un appareil extrêmement utile! Vous pouvez trouver plus d'informations sur cet excellent outil [ici](https://microbit.org/).
-3. <u> Module GPS </u>: Nous utilisons un VK282U7G5LF. Si vous êtes curieux, vous pouvez en savoir plus en consultant sa [fiche technique](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
+1. <ins>Mu Editor</ins>: pour éditer et télécharger le code sur l'appareil. [Téléchargez-le ici](https://codewith.mu/en/download) s'il n'est pas déjà installé sur l'ordinateur.
+2. <ins>Micro:bit v2</ins>: Ne vous laissez pas tromper par sa simplicité, c'est un appareil extrêmement utile! Vous pouvez trouver plus d'informations sur cet excellent outil [ici](https://microbit.org/).
+3. <ins>Module GPS </ins>: Nous utilisons un VK282U7G5LF. Si vous êtes curieux, vous pouvez en savoir plus en consultant sa [fiche technique](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
 4. Boitier pour piles avec piles.
-5. le canoë fabriqué lors des activités précédentes.
+5. Le canoë fabriqué lors des activités précédentes.
 
 <br>
 
