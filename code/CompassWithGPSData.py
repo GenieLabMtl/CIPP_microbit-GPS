@@ -2,6 +2,7 @@
 from microbit import *
 import math
 import radio
+import time
 #import speech
 
 BUFFLEN = 128
@@ -18,7 +19,7 @@ currentLocation = [0.0, 0.0]
 DESTINATION = (45.52837212770099, -73.5524555128115)
 
 # How close we need to be to the destination to trigger our "We're here" message, in meters
-DIST_THRESH = 10.0
+DIST_THRESH = 0.01
 
 # to assemble the incoming data from the GPS module
 msg = ""
@@ -160,8 +161,8 @@ def converterDM_DD(coordToConvert) :
 def soundWhenClose(message):
     # check if close to destination, taking into account E/W N/S coordinate values
     # returns True if within threshold distance of the destination
-    if (abs(abs(DESTINATION[0]) - abs(currentLocation[0])) < DIST_THRESH) and\
-        (abs(abs(DESTINATION[1]) - abs(currentLocation[1])) < DIST_THRESH):# and\
+    if (abs(currentLocation[0] - DESTINATION[0]) < DIST_THRESH) and\
+        (abs(currentLocation[1]- DESTINATION[1]) < DIST_THRESH):# and\
         #(((currentLocation[0]== DESTINATION[0]) & (currentLocation[0]==0)) | (currentLocation[0] * DESTINATION[0] > 0)) and\
         #(((currentLocation[1]== DESTINATION[1]) & (currentLocation[1]==0)) | (currentLocation[1] * DESTINATION[1] > 0)) :
 
@@ -180,6 +181,9 @@ def soundWhenClose(message):
 # Start program here
 initCompass()
 initGPS()
+time.sleep(1)
+coords = [0,0]
+
 
 #speech.say(SM_START, pitch=120, speed=120, mouth=150, throat=170)
 
@@ -194,17 +198,26 @@ while True:
             if len(sp)>1:
                 for m in sp[1:]:
                     listeNMEA.append(msg)
+                    sendNMEA(listeNMEA)
+
                     msg="$"+m
-                    if len(listeNMEA) > 1:
-                        splitlist = listeNMEA[-1].split(",")
-                        if len(splitlist) > 3:
-                            if splitlist[0] == "$GPRMC":
-                                coords = [converterDM_DD(float(splitlist[3])), converterDM_DD(float(splitlist[5]))]
+                    splitlist = listeNMEA[-1].split(",")
+                    sendNMEA("$split")
+                    if len(splitlist) > 7:
+                        sendNMEA("$length")
+                        if splitlist[0] == "$GPRMC":
+                            sendNMEA("$check 0")
+                            if (splitlist[3] != ""):
+                                sendNMEA("$before coords")
+                                sendNMEA("$" + str(splitlist[3]) + " --- " + str(splitlist[5].lstrip('0')))
+                                coords[0] = converterDM_DD(float(splitlist[3]))
+                                coords[1] = converterDM_DD(float(splitlist[5]))
                                 if splitlist[4] == "S" :
                                     coords[0] = -coords[0]
                                 if splitlist[6] == "W" :
                                     coords[1] = -coords[1]
-                                currentLocation.append(coords)
+                                currentLocation = coords
+                                sendNMEA("$" + str(coords))
         if len(listeNMEA) > 2:
             listeNMEA.clear()
 
