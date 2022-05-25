@@ -16,11 +16,11 @@ This website, as well as other similar ones like gitlab and bitbucket, are used 
 ## Preparation steps
 You will need the following items to do the activity.  Ask someone working at the lab if something is missing or does not seem to work as it should.
 
-- <ins>Mu Editor</ins>: to edit and upload the code to the device. [Download it here](https://codewith.mu/en/download) if it's not already installed on the computer.
-- <ins>Micro:bit v2</ins>: Don't let it's simplicity fool you, it is an extremely capable device. You can find more info on that most excellent tool [here](https://microbit.org/).
-- <ins>Gps module</ins>: We are using a VK282U7G5LF. If you are currious about it, you can find out more about it by consulting its [datasheet](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
-- Battery holder with batteries.
-- The canoe made during the previous activities.
+1. <ins>Mu Editor</ins>: to edit and upload the code to the device. [Download it here](https://codewith.mu/en/download) if it's not already installed on the computer.
+2. <ins>Micro:bit v2</ins>: Don't let it's simplicity fool you, it is an extremely capable device. You can find more info on that most excellent tool [here](https://microbit.org/).
+3. <ins>Gps module</ins>: We are using a VK282U7G5LF. If you are currious about it, you can find out more about it by consulting its [datasheet](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
+4. Battery holder with batteries.
+5. The canoe made during the previous activities.
 
 <br>
 
@@ -33,4 +33,4 @@ To learn more about the python programming language, [w3schools](https://www.w3s
 
 <br>
 
-When you are ready to proceed to the first section of the activity, go [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1).
+#### When you are ready to proceed to the first section of the activity, go [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1).

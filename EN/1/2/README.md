@@ -1,6 +1,6 @@
 <h1 align="center"> Part 1.2 : The components </h1>
 
-Once the code is done, we need to assemble the components. The various components - battery holder, GPS module, micro:bit - should fit pretty well in the canoe you've printed.  We can see on this image taken from the datasheet which cables are which.  
+Once the code is done, we need to assemble the components. The various elements - battery holder, GPS module, micro:bit - should fit pretty well in the canoe you've printed.  We can see on this image taken from the datasheet which cables are which.  
 *Be careful!* The colours of the cables are not always the same, so only the order matters.
 <p align="center"><img align="center" width="500" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPS_Connectors.png" alt="GPS cables order image"></p>
 
@@ -15,4 +15,4 @@ Here are the connections that need to be made:
 
 If you now power the micro:bit, you should also see the red light come up on the GPS module!  The GPS module needs to lock on satelites to work properly, so it will not work indoors.  Once you are outside and it has acquired the signal of at least 2 satelites, it will turn on a green light, meaning it can now work properly! Press on the A button and wait a few seconds to record a location, then press it again to stop recording.  That's it!  Go back indoors to retrieve the data and proceed with the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/2).
 
-When you're done, proceed to the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/3).
+#### When you're done, proceed to the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/3).

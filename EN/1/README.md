@@ -8,19 +8,15 @@ The code we will use today works pretty easily:
 > - Wait a few seconds to make sure we have a few valid readings.
 > - Press A again to stop capturing.
 
-That's all we need! The GPS locations will be stored on the micro:bit on files called gps01.csv, gps02.csv, etc. and will look something like this:
-<p><img align="center" width="800" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture_small.png" alt="GPS locations stored on csv file"></p>
+That's all we need to do! GPS locations will be saved to the micro:bit in files called gps01.csv, gps02.csv, etc. and which look like this:
 
-The coordinates are stored in the Degrees Minutes format. To use them in the next step or in Google Earth, for example, we will need to convert them to Decimal degree, which can be done conveniently on [this website](https://coordinates-converter.com/en/).
+<p><img align="center" width="300" src="https://github.com/GenieLabMtl/CIPP_microbit-GPS/blob/presentation/static/images/GPSCapture2.png" alt="GPS locations stored on csv file"></p>
 
-[**Let's do this!**](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1/1)
+Coordinates are stored in Degrees Decimal format. These values are obtained from the information transmitted by the GPS module and which look like this:
 
-## Sommaire
+<p><img align="center" width="600" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture_small.png" alt="Location data obtained by GPS"></p>
 
-- [The code](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1/1)
-- [The components](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1/2)
-- [Retrieve the coordinates](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1/3)
-
+#### [**Let's do this!**](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1/1)
 
 
 

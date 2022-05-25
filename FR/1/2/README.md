@@ -1,6 +1,6 @@
-<h1 align="center"> Partie 1.2 : Les composantes </h1>
+<h1 align="center"> Partie 1.2 : Les composants </h1>
 
-Une fois le code fait, nous devons assembler les composantes. Les différentes composantes - boitier pour les piles, module GPS, micro:bit - devraient s'adapter assez bien au canoë que vous avez imprimé. On peut voir sur cette image tirée de la fiche technique quels câbles sont lesquels. *Attention !* Les couleurs des câbles ne sont pas toujours les mêmes, seul l'ordre compte.
+Une fois le code fait, nous devons assembler les composants. Les différents éléments - boitier pour les piles, module GPS, micro:bit - devraient s'adapter assez bien au canoë que vous avez imprimé. On peut voir sur cette image tirée de la fiche technique quels câbles sont lesquels. *Attention !* Les couleurs des câbles ne sont pas toujours les mêmes, seul l'ordre compte.
 <p align="center"><img align="center" width="500" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPS_Connectors.png" alt="Image de commande de câbles GPS"></p>
 
 

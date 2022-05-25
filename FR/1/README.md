@@ -10,11 +10,11 @@ Le code que nous allons utiliser aujourd'hui fonctionne assez facilement :
 
 C'est tout ce que nous avons besoin de faire ! Les emplacements GPS seront sauvegardés sur le micro:bit dans des fichiers appelés gps01.csv, gps02.csv, etc. et qui ressemblent à ceci :
 
-<p><img align="center" width="800" src="https://github.com/GenieLabMtl/CIPP_microbit-GPS/blob/presentation/static/images/GPSCapture2.png" alt="Localisations GPS stockées dans un fichier csv"></p>
+<p><img align="center" width="300" src="https://github.com/GenieLabMtl/CIPP_microbit-GPS/blob/presentation/static/images/GPSCapture2.png" alt="Localisations GPS stockées dans un fichier csv"></p>
 
-Les coordonnées sont stockées au format Degrés Décimales. Ces valeurs sont obtenues à partir des informations transmises par GPS et qui ressemblent à ceci :
+Les coordonnées sont stockées au format Degrés Décimales. Ces valeurs sont obtenues à partir des informations transmises par le module GPS et qui ressemblent à ceci :
 
-<p><img align="center" width="800" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture_small.png" alt="Localisations GPS stockées dans un fichier csv"></p>
+<p><img align="center" width="600" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPSCapture_small.png" alt="Données de localisation obtenues par GPS"></p>
 
 #### [**Allons-y!**](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/1)
 
