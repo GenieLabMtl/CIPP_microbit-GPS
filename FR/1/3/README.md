@@ -8,4 +8,4 @@
 
 <br> 
 
-Voilà! Nous avons maintenant un GPS fonctionnel qui garde en mémoire notre positionnement! Quand vous serez prêt, vous pourrez retourner sur le site web de GénieLab pour continuer le parcours.
+Voilà! Nous avons maintenant un GPS fonctionnel qui garde en mémoire notre positionnement! Quand vous serez prêt, vous pourrez retourner sur le [site web de GénieLab](https://genielab.co/fr/courses/cipp-fablab/) pour continuer le parcours.

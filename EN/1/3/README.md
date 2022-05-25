@@ -8,4 +8,4 @@
 
 <br>
 
-There you have it! We now have a working GPS that remembers our position! When you are ready, you can return to the GenieLab website to continue the course.
+There you have it! We now have a working GPS that remembers our position! When you are ready, you can return to the [GenieLab website](https://genielab.co/en/courses/cipp-fablab/) to continue the course.

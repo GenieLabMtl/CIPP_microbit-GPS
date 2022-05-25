@@ -2,7 +2,7 @@
 
 1. As the code is quite complexe, it is provided in it's entirety. Download it to your computer by right-clicking anywhere on the page and Save as...
 
-    [Download the code here.](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py). 
+    ### [Download the code here.](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py). 
 <br>
 
 <p align="center"><img align="center" width="500" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/saveFileonGit.gif"></p>
@@ -15,6 +15,8 @@
 
 3. Load the GPStoCSV.py file you just downloaded is step 1.
 <br>
+
+<p align="center"><img align="center" width="500" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/save_in_mu_editor.gif"></p>
 
 4. This code is pretty straight forward.  First, it establishes a connection with the GPS module.  Then, you use the A button to switch between "standby mode", where nothing is really happening, and "record mode", where your current location is being written every few seconds to a file on the micro:bit.  By pressing the B button, you can have a reminder of which mode you are in: a target in capture mode, and a smile in standby mode.  That's all you need to store GPS locations!
 
