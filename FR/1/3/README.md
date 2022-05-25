@@ -6,8 +6,6 @@
 
 <p><img align="center" width="500" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/Mu_File_transfer.png" alt="Image de commande de câbles GPS"></p>
 
-*<ins>RAPPEL</ins>: Les coordonnées GPS sont stockées dans nos fichiers .csv au format Degrés-Minutes. Pour les utiliser à l'étape suivante ou dans Google Earth, par exemple, nous devrons les convertir en degré décimal, ce qui peut être fait facilement sur [ce site Web](https://coordinates-converter.com/en/).*
-
 <br> 
 
-Lorsque c'est fait, passez à l'étape suivante de l'activité [ici](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/2/1).
+Voilà! Nous avons maintenant un GPS fonctionnel qui garde en mémoire notre positionnement!

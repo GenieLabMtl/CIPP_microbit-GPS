@@ -13,4 +13,4 @@ Voici les connexions à faire :
 
 Si vous alimentez maintenant le micro:bit, vous devriez également voir le voyant rouge s'allumer sur le module GPS ! Le module GPS doit se verrouiller sur les satellites pour fonctionner correctement, il ne fonctionnera donc pas à l'intérieur. Une fois que vous êtes à l'extérieur et qu'il a acquis le signal d'au moins 2 satellites, il s'allume en vert, ce qui signifie qu'il peut maintenant fonctionner correctement ! Appuyez sur le bouton A et attendez quelques secondes pour enregistrer un emplacement, puis appuyez à nouveau pour arrêter l'enregistrement. C'est tout! Retournez à l'intérieur pour récupérer les données.
 
-Lorsque c'est fait, passez à l'étape suivante de l'activité [ici](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/3).
+#### Lorsque c'est fait, passez à l'étape suivante de l'activité [ici](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/3).

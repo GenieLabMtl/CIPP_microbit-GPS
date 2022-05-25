@@ -34,4 +34,4 @@ Pour en savoir plus sur le langage de programmation Python, [w3schools](https://
 
 <br>
 
-Lorsque vous êtes prêt à passer à la première section de l'activité, allez [ici](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1).
+#### Lorsque vous êtes prêt à passer à la première section de l'activité, allez [ici](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1).

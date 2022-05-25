@@ -18,4 +18,4 @@
 
 4. Ce code est assez direct. Tout d'abord, il établit une connexion avec le module GPS. Ensuite, vous utilisez le bouton A pour basculer entre le "mode veille", où rien ne se passe vraiment, et le "mode enregistrement", où votre position actuelle est écrite toutes les quelques secondes dans un fichier sur le micro:bit. En appuyant sur le bouton B, vous pouvez avoir un rappel du mode dans lequel vous vous trouvez : une cible en mode capture, un sourire en mode attente. C'est tout ce dont vous avez besoin pour stocker les positions GPS !
 
-Lorsque c'est fait, passez à l'étape suivante de l'activité [ici](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/2).
+#### Lorsque c'est fait, passez à l'étape suivante de l'activité [ici](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/2).
