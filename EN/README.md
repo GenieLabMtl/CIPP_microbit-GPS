@@ -1,17 +1,26 @@
-# CIPP_microbit-GPS
-
-Welcome to github! This website, as well as other similar ones like gitlab and bitbucket, are used by pretty much all programmers to store their projects, collaborate, and keep an history of all changes made to project files, which is called "version control".  The readme files – like the one you are reading now – of this project will guide you along the activity.
+<h1 align="center"> CIPP_microbit-GPS </h1>
+<br>
+<p align="center"> Welcome to github! </p>
+<br>
+This website, as well as other similar ones like gitlab and bitbucket, are used by pretty much all programmers to store their projects, collaborate, and keep an history of all changes made to project files, which is called "version control".  The readme files – like the one you are reading now – of this project will guide you along the activity.
 
 <br>
+
+## Sommaire
+
+- [Preparation steps](#preparation-steps)
+- [Start Mu Editor and get code on the micro:bit](#start-mu-editor-and-get-code-on-the-micro:bit)
+- [Get GPS to store location on device](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1)
+- [Find your way to a GPS location](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/2)
 
 ## Preparation steps
 You will need the following items to do the activity.  Ask someone working at the lab if something is missing or does not seem to work as it should.
 
-- Mu Editor: to edit and upload the code to the device. [Download it here](https://codewith.mu/en/download) if it's not already installed on the computer.
-- micro:bit v2. Don't let it's simplicity fool you, it is an extremely capable device. You can find more info on that most excellent tool [here](https://microbit.org/).
-- gps module. We are using a VK282U7G5LF. If you are currious about it, you can find out more about it by consulting its [datasheet](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
-- battery holder with batteries.
-- the canoe made during the previous activities.
+1. <ins>Mu Editor</ins>: to edit and upload the code to the device. [Download it here](https://codewith.mu/en/download) if it's not already installed on the computer.
+2. <ins>Micro:bit v2</ins>: Don't let it's simplicity fool you, it is an extremely capable device. You can find more info on that most excellent tool [here](https://microbit.org/).
+3. <ins>Gps module</ins>: We are using a VK282U7G5LF. If you are currious about it, you can find out more about it by consulting its [datasheet](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
+4. Battery holder with batteries.
+5. The canoe made during the previous activities.
 
 <br>
 
@@ -24,4 +33,4 @@ To learn more about the python programming language, [w3schools](https://www.w3s
 
 <br>
 
-When you are ready to proceed to the first section of the activity, go [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1).
+#### When you are ready to proceed to the first section of the activity, go [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/EN/1).
