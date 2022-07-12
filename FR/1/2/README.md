@@ -5,6 +5,7 @@ Une fois le code fait, nous devons assembler les composants. Les différents él
 1. boitier pour les piles avec piles
 2. module GPS
 3. micro:bit
+4. carte de développement micro:bit
 
 On peut voir sur cette image tirée de la fiche technique quels câbles sont lesquels. *Attention!* Les couleurs des câbles ne sont pas toujours les mêmes, seul l'ordre compte.
 <p align="center"><img align="center" width="500" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/GPS_Connectors.png" alt="Image de commande de câbles GPS"></p>
