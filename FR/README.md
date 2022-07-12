@@ -21,7 +21,8 @@ Vous aurez besoin des éléments suivants pour faire l'activité. Demandez à qu
 2. <ins>Micro:bit v2</ins>: Ne vous laissez pas tromper par sa simplicité, c'est un appareil extrêmement utile! Vous pouvez trouver plus d'informations sur cet excellent outil [ici](https://microbit.org/).
 3. <ins>Module GPS </ins>: Nous utilisons un VK282U7G5LF. Si vous êtes curieux, vous pouvez en savoir plus en consultant sa [fiche technique](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
 4. Boitier pour piles avec piles.
-5. Le canoë fabriqué lors des activités précédentes.
+5. Câble USB
+6. Le canoë fabriqué lors des activités précédentes.
 
 <br>
 

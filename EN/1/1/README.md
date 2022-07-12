@@ -20,4 +20,9 @@
 
 4. This code is pretty straight forward.  First, it establishes a connection with the GPS module.  Then, you use the A button to switch between "standby mode", where nothing is really happening, and "record mode", where your current location is being written every few seconds to a file on the micro:bit.  By pressing the B button, you can have a reminder of which mode you are in: a target in capture mode, and a smile in standby mode.  That's all you need to store GPS locations!
 
+5. To upload the code to the micro:bit, you need to connect the device to your computer with the USB cable. The MU Editor should detect it quickly. Then, click on the "Flash" button to install the program.
+
+<p align="center"><img align="center" width="500" src="https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/main/static/images/uploadToMicroBit.gif"></p>
+
+
 #### When you're done, proceed to the next step of the activity [here](https://github.com/GenieLabMtl/CIPP_microbit-GPS/tree/main/FR/1/2).

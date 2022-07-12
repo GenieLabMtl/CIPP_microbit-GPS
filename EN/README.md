@@ -20,7 +20,8 @@ You will need the following items to do the activity.  Ask someone working at th
 2. <ins>Micro:bit v2</ins>: Don't let it's simplicity fool you, it is an extremely capable device. You can find more info on that most excellent tool [here](https://microbit.org/).
 3. <ins>Gps module</ins>: We are using a VK282U7G5LF. If you are currious about it, you can find out more about it by consulting its [datasheet](https://github.com/CainZ/V.KEL-GPS/blob/master/VK2828U7G5LF%20Data%20Sheet%2020150902.pdf).
 4. Battery holder with batteries.
-5. The canoe made during the previous activities.
+5. USB cable
+6. The canoe made during the previous activities.
 
 <br>
 
