@@ -1,6 +1,6 @@
 <h1 align="center"> Part 1.1 : The code </h1>
 
-1. As the code is quite complexe, it is provided in it's entirety. Download it to your computer by right-clicking anywhere on the page and Save as...
+1. As the code is quite complex, it's provided in it's entirety. Download it to your computer by right-clicking anywhere on the page and select Save as...
 
     ### [Download the code here.](https://raw.githubusercontent.com/GenieLabMtl/CIPP_microbit-GPS/7761d36211a08e31bb17217241e255173bdf71ff/code/GPStoCSV.py). 
 <br>
