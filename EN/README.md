@@ -6,7 +6,7 @@ This website, as well as other similar ones like gitlab and bitbucket, are used 
 
 <br>
 
-## Sommaire
+## Summary
 
 - [Preparation steps](#preparation-steps)
 - [Start Mu Editor and get code on the micro:bit](#start-mu-editor-and-get-code-on-the-micro:bit)
